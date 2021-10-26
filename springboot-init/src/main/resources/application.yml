@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+name: abc
+age: 12
+
+#对象
+person:
+  name: JYQ #引用上边定义的name值
+  age: 20
+
+#对象行内写法
+person2: {name: JYQ,age: 20}
+
+#数组
+address:
+  - beijing
+  - shanghai
+
+#数组行内写法
+address2: [beijing,shanghai]
+msg1: 'hello \n world'#不会识别转义字符，直接原样输出
+msg2: "hello \n world"#会识别转移字符
