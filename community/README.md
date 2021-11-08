@@ -7,3 +7,7 @@ springboot是通过容器管理bean的，所有带有注解的文件，只要在
 
 ## BootStrap介绍
 [BootStrap下载地址](https://v3.bootcss.com/getting-started/#download)
+
+## Session和Cookies
+
+1.Session相当于银行账户，Cookies相当于银行卡

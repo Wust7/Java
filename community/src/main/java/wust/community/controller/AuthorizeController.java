@@ -9,6 +9,8 @@ import wust.community.dto.AccessTokenDO;
 import wust.community.dto.GithubUser;
 import wust.community.provider.GithubProvider;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 授权页面
  */
@@ -38,16 +40,26 @@ public class AuthorizeController {
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
-                           @RequestParam(name = "state") String state){
+                           @RequestParam(name = "state") String state,
+                           HttpServletRequest request){
         AccessTokenDO accessTokenDO = new AccessTokenDO();
         accessTokenDO.setCode(code);
         accessTokenDO.setState(state);
         accessTokenDO.setClient_id(clientId);
         accessTokenDO.setClient_secret(clientSecret);
         accessTokenDO.setRedirect_uri(redirectUri);
+        System.out.println("********************");
         String accessToken = githubProvider.getAccessToken(accessTokenDO);
         GithubUser user = githubProvider.getUser(accessToken);
-        System.out.println(user.getName());
-        return "index";
+        if(user!=null){
+            //登陆成功，写Cookies和Session
+            System.out.println(user.getName());
+            //相当于银行账户创建成功但未给银行卡
+            request.getSession().setAttribute("user",user);
+            return "redirect:index";//跳转回登录页面  ， 如果不写redirect的话，网页地址不会变还是原来的，写了的话会重新跳转回登录界面
+        }else{
+            //登录失败，重新登录
+            return "redirect:";
+        }
     }
 }
