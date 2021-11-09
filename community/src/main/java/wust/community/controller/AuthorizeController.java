@@ -59,7 +59,7 @@ public class AuthorizeController {
             return "redirect:index";//跳转回登录页面  ， 如果不写redirect的话，网页地址不会变还是原来的，写了的话会重新跳转回登录界面
         }else{
             //登录失败，重新登录
-            return "redirect:";
+            return "redirect:index";
         }
     }
 }
