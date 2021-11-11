@@ -5,8 +5,9 @@ springboot是通过容器管理bean的，所有带有注解的文件，只要在
 1.当发现上次commit有错误的时候可使用命令git commit --amend --no-edit进行追加，且不需要修改修改上传注释
 2.所有commit之前一定要add
 
-## BootStrap介绍
+## 资料
 [BootStrap下载地址](https://v3.bootcss.com/getting-started/#download)
+[springboot资料](https://docs.spring.io/spring-boot/docs/current/reference/html/)
 
 ## Session和Cookies
 
@@ -23,3 +24,8 @@ springboot是通过容器管理bean的，所有带有注解的文件，只要在
 ## 数据库选择
 
 选择H2数据库
+
+## 快捷键
+
+1.Shift+F6 快速替换变量名
+2.
