@@ -1,17 +1,21 @@
 package com.item;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class demo_2 {
-    public ListNode add(ListNode l1,ListNode l2){
-        ListNode L = null;
-        ListNode p =null;
-        while(l1!=null&&l2!=null){
-            L = new ListNode(l1.val+l2.val);
-            l1 = l1.next;
-            l2 = l2.next;
+    public static ArrayList<Double> getRX(double P[][]) {
+//            int gen = 0;
+//            for(gen=1;gen<maxGen;gen++){
+        int numn = P.length;
+        int i = 1;
+        ArrayList<Double> randNum = new ArrayList<>();
+        while (i <= numn) {
+            randNum.add((double) i);
         }
-        if(l1 ==null&&l2!=null){
-            ;
-        }
-        return null;
+        Collections.shuffle(randNum);
+//        }
+        return randNum;
+
     }
 }
