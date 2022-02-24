@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.util.Scanner;
 
 public class StringDemo {
@@ -6,18 +5,19 @@ public class StringDemo {
         Scanner sc = new Scanner(System.in);
 
         String line = sc.nextLine();
-        for(int i = 0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             System.out.println(line.charAt(i));
         }
-=======
-public class StringDemo {
-    public static void main(String[] args) {
-        String s1 = "abc";
-        String s2 = "abc";
-        //判断地址是否相同
-        System.out.println(s1 == s2);
-        //判断值是否相等
-        System.out.println(s1.equals(s2));
->>>>>>> f5fe987364a46df600bca99305d209ce64a6efd2
     }
 }
+
+//public class StringDemo {
+//    public static void main(String[] args) {
+//        String s1 = "abc";
+//        String s2 = "abc";
+//        //判断地址是否相同
+//        System.out.println(s1 == s2);
+//        //判断值是否相等
+//        System.out.println(s1.equals(s2));
+//    }
+//}
