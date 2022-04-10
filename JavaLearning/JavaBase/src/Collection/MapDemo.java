@@ -15,12 +15,11 @@ public class MapDemo {
         m.put("JYQ2","WST");
         m.put("WLK","WST");
         m.put("JYQ3","WST");
-
+        System.out.println(m);
         //删除指定键元素
         m.remove("JYQ");
         //删除所有元素
 //        m.clear();
-
         //判断是否包含某键
         System.out.println(m.containsKey("JYQ2"));
         System.out.println(m.containsValue("WST"));

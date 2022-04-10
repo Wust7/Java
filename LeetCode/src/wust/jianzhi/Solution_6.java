@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Solution_6 {
     public static void main(String[] args) {
@@ -23,6 +24,7 @@ public class Solution_6 {
             endNums[j] = nums.get(nums.size()-j-1);
         }
         System.out.println(endNums[0]+""+endNums[1]+endNums[2]);
+        int[] num={};
     }
 
 }
