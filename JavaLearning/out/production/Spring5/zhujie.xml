@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+<!--开启组件扫描-->
+<!--    扫描多个包，可以使用逗号隔开-->
+<!--    <context:component-scan base-package="com.zhujie.spring5.service,com.zhujie.spring5.dao"></context:component-scan>-->
+<!--    指定其上层包，扫描其中所有包-->
+    <context:component-scan base-package="com.zhujie.spring5"></context:component-scan>
+
+<!--    示例一-->
+<!--    use-default-filters="false"：表示不使用默认filter,自己配置filter-->
+<!--    context:include-filter:设置扫描哪些内容-->
+<!--    下面的意思是自动扫描包com.zhujie.spring5下并非所有包，而是扫描该org.springframework.stereotype.Component注解（annotation）的包-->
+    <context:component-scan base-package="com.zhujie.spring5" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>
+
+<!--    示例二-->
+<!--    context:exclude-filter ：设置哪些内容不扫描-->
+<!--    下面的意思是自动扫描包com.zhujie.spring5下除了org.springframework.stereotype.Component注解（annotation）的所有其他包-->
+<!--    <context:component-scan base-package="com.zhujie.spring5">-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Component"/>-->
+<!--    </context:component-scan>-->
+
+</beans>

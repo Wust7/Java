@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--    手动装配-->
+    <bean id="emp" class="com.wust.spring5.bean.Emp">
+        <property name="dept" ref="dept"></property>
+    </bean>
+<!--    <bean id="dept" class="com.wust.spring5.bean.Dept"></bean>-->
+
+<!--    自动装配-->
+<!--    autowire: 配置自动装配-->
+<!--    autowire两个属性值：
+                byName根据属性名称注入 ：注入值bean的id值和类属性名称一样，但是如下面的id="dept"只能有一个，不然会报错
+                byType根据属性类型注入 ：去寻找需要的bean，如Dept，但若存在同一类型的不同bean，仍然会报错-->
+<!--    根据名称找对象-->
+    <bean id="emp2" class="com.wust.spring5.bean.Emp" autowire="byName">
+<!--        name名称和ref名称相同可以实现自动装配-->
+<!--        <property name="dept" ref="dept"></property>-->
+    </bean>
+<!--    根据类型找对象-->
+    <bean id="emp3" class="com.wust.spring5.bean.Emp" autowire="byType">
+    </bean>
+
+
+    <bean id="dept" class="com.wust.spring5.bean.Dept"></bean>
+</beans>

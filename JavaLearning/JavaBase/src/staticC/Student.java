@@ -1,6 +1,6 @@
 package staticC;
 
-public class Student {
+final public class Student {
     public int score;
     public static int age;
     public void show(){

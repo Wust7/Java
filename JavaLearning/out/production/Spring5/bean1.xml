@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--配置User类对象创建-->
+<!--    <bean id="user1" class="com.wust.spring5.User"></bean>-->
+
+<!--    无参构造-->
+    <bean id="book" class="com.wust.spring5.Book">
+        <property name="bName" value="弟子规"></property>
+    </bean>
+
+<!--有参构造-->
+    <bean id="Orders" class="com.wust.spring5.Orders">
+        <constructor-arg name="name" value="JYQ"></constructor-arg>
+        <constructor-arg name="age" value="15"></constructor-arg>
+    </bean>
+
+<!--p名称空间注入-->
+    <bean id="book2" class="com.wust.spring5.Book" p:bName="三字经">
+
+    </bean>
+
+<!--    设置空值-->
+    <bean id="book3" class="com.wust.spring5.Book">
+        <property name="bName">
+            <null/>
+        </property>
+    </bean>
+<!--    特殊符号作为参数-->
+<!--    1.对特殊符号进行转义&lt; &gt;-->
+<!--    2.把特殊符号写进CDATA中-->
+    <bean id="book4" class="com.wust.spring5.Book">
+        <property name="bName" value="&lt; &gt;<<武汉>>"></property>
+    </bean>
+        <bean id="book5" class="com.wust.spring5.Book">
+            <property name="bName">
+                <value><![CDATA[<<武汉>>]]></value>
+            </property>
+        </bean>
+</beans>

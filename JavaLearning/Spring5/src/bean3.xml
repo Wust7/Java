@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<!--   以下都为普通bean，定义的bean类型就是返回类型-->
+<!--集合类型注入-->
+    <bean id="stu" class="com.wust.spring5.collectiontype.Stu">
+<!--        数组集合注入-->
+        <property name="courses">
+            <array>
+                <value>语文</value>
+                <value>数学</value>
+                <value>英语</value>
+            </array>
+        </property>
+<!--        list类型属性注入-->
+        <property name="list">
+            <list>
+                <value>JYQ</value>
+                <value>WST</value>
+            </list>
+        </property>
+<!--        Map类型-->
+        <property name="maps">
+            <map>
+                <entry key="JYQ" value="12"></entry>
+                <entry key="JYQ1" value="123"></entry>
+                <entry key="JYQ2" value="124"></entry>
+            </map>
+        </property>
+<!--        Set类型属性注入-->
+        <property name="sets">
+            <set>
+                <value>Mysql</value>
+                <value>C++</value>
+            </set>
+        </property>
+<!--注入list集合类型，值是对象-->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+            </list>
+        </property>
+    </bean>
+    <bean id="course1" class="com.wust.spring5.collectiontype.Course">
+        <property name="ename" value="JYQ"></property>
+    </bean>
+    <bean id="course2" class="com.wust.spring5.collectiontype.Course">
+        <property name="ename" value="WST"></property>
+    </bean>
+
+<!--    最上面需要添加两处util相关配置-->
+<!--    1.提取list集合类型属性注入-->
+    <util:list id="list">
+        <value>三字经</value>
+        <value>弟子规</value>
+        <value>三国演义</value>
+    </util:list>
+<!--    2.提取list集合类型属性注入使用-->
+    <bean id="book" class="com.wust.spring5.collectiontype.Book">
+        <property name="booklist" ref="list"></property>
+    </bean>
+<!--设置单实例还是多实例 singleton:单实例 prototype:多实例-->
+<!--    对于单实例singleton：在加载spring配置文件时就会创建单实例对象-->
+<!--    对于多实例prototype：是在调用getBean方法时候创建多实例对象-->
+    <bean id="book2" class="com.wust.spring5.collectiontype.Book" scope="prototype">
+        <property name="booklist" ref="list"></property>
+    </bean>
+</beans>

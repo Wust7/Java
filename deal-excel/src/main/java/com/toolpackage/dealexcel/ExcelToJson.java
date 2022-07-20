@@ -24,11 +24,11 @@ public class ExcelToJson {
         };
         try{
             //获取无经纬度的水资源成分表
-            Workbook waterWorkbook = Workbook.getWorkbook(new File("G:\\2015-2019年监测数据（中国地质大学提供数据）.xls"));
+            Workbook waterWorkbook = Workbook.getWorkbook(new File("C:\\Users\\17822\\Desktop\\毕业论文相关\\所有数据\\2015-2019年监测数据（中国地质大学提供数据）\\2015-2019年监测数据（中国地质大学提供数据）.xls"));
             ArrayList<ArrayList<ArrayList<Cell>>> waterExcel =Tool.getExcel(waterWorkbook);
 
             //获取经纬度表数据,并制成HashMap表
-            Workbook gnotes = Workbook.getWorkbook(new File("G:\\经纬度.xls"));
+            Workbook gnotes = Workbook.getWorkbook(new File("C:\\Users\\17822\\Desktop\\毕业论文相关\\所有数据\\2015-2019年监测数据（中国地质大学提供数据）\\点位经纬度.xls"));
             ArrayList<ArrayList<ArrayList<Cell>>> gnotesExcel = Tool.getExcel(gnotes);
             ArrayList<ArrayList<Cell>> gnotesSheet = gnotesExcel.get(0);
             HashMap<String,String> gnotesMap = new HashMap<>();
@@ -57,13 +57,40 @@ public class ExcelToJson {
                         noGnotes.add(stringArrayList);
                     }
                     //此处可以加一个无经纬度的表
+                    //后面微量元素转json格式
+//                    for(int i =0;i<row.size();i++){
+//                        if(i<9){
+//                            endRow.add(row.get(i).getContents());
+//                        }else {
+////                            jsonObject.put(dataEnum[i],row.get(i).getContents().toString());
+//                            if (i!=15&&i!=16&&i!=17&&i!=18&&i!=20){
+//                                jsonObject.put(dataEnum[i],row.get(i).getContents().toString());
+//                            } else {
+//                                if(!row.get(i).getContents().equals("-")){
+//                                    BigDecimal bigDecimal = new BigDecimal(((NumberCell)row.get(i)).getValue());
+//                                    String f="";
+//                                    if(i==15||i==16){
+//                                        f = bigDecimal.setScale(4,BigDecimal.ROUND_HALF_UP).toPlainString();
+//                                    }else{
+//                                        f = bigDecimal.setScale(5,BigDecimal.ROUND_HALF_UP).toPlainString();
+//                                    }
+//
+//                                    jsonObject.put(dataEnum[i],f);
+//                                } else{
+//                                    jsonObject.put(dataEnum[i],"-");
+//                                }
+//                            }
+//                        }
+//                    }
+
+                    //为转换为json格式
                     for(int i =0;i<row.size();i++){
                         if(i<9){
                             endRow.add(row.get(i).getContents());
                         }else {
 //                            jsonObject.put(dataEnum[i],row.get(i).getContents().toString());
                             if (i!=15&&i!=16&&i!=17&&i!=18&&i!=20){
-                                jsonObject.put(dataEnum[i],row.get(i).getContents().toString());
+                                endRow.add(row.get(i).getContents().toString());
                             } else {
                                 if(!row.get(i).getContents().equals("-")){
                                     BigDecimal bigDecimal = new BigDecimal(((NumberCell)row.get(i)).getValue());
@@ -74,24 +101,28 @@ public class ExcelToJson {
                                         f = bigDecimal.setScale(5,BigDecimal.ROUND_HALF_UP).toPlainString();
                                     }
 
-                                    jsonObject.put(dataEnum[i],f);
+                                    endRow.add(f);
                                 } else{
-                                    jsonObject.put(dataEnum[i],"-");
+                                    endRow.add("-");
                                 }
                             }
                         }
                     }
-                    endRow.add(9,jsonObject.toString());
-                    endRow.add(10,gnotesValue);
+//                    endRow.add(9,jsonObject.toString());
+//                    endRow.add(10,gnotesValue);
+
+                    //非json格式，修改
+                    endRow.add(gnotesValue);
+
                     endExcel.add(endRow);
                 }
             }
-            Tool.createExcel("POIDemo","G:\\并入经纬度后的总表.xls",endExcel);
+            Tool.createExcel("POIDemo","C:\\Users\\17822\\Desktop\\毕业论文相关\\所有数据\\2015-2019年监测数据（中国地质大学提供数据）\\处理后数据\\并入经纬度后的总表.xls",endExcel);
             ArrayList<ArrayList<String>> arrayList = new ArrayList<>();
             for(ArrayList<String> a:noGnotes){
                 arrayList.add(a);
             }
-            Tool.createExcel("POIDemo","G:\\无经纬度表.xls",arrayList);
+            Tool.createExcel("POIDemo","C:\\Users\\17822\\Desktop\\毕业论文相关\\所有数据\\2015-2019年监测数据（中国地质大学提供数据）\\处理后数据\\无经纬度表.xls",arrayList);
             waterWorkbook.close();
             gnotes.close();
         } catch(IOException e){

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--自定义类型赋值-->
+
+<!--    方式一：外部bean-->
+    <!--1.创建service和dao对象-->
+    <bean id="userService" class="com.wust.spring5.service.UserService">
+<!--        注入UserDao对象-->
+<!--        其中UserDao为接口，通过创建其实现类UserDaoImpl对象来实现-->
+<!--        name属性：类里面属性名称-->
+<!--        ref属性：创建userDao对象bean标签id值 -->
+        <property name="userDao" ref="userDaoImpl"></property>
+    </bean>
+    <bean id="userDaoImpl" class="com.wust.spring5.dao.UserDaoImpl"></bean>
+
+
+
+<!--    方式二：内部bean-->
+    <bean id="emp1" class="com.wust.spring5.bean.Emp">
+        <property name="ename" value="JYQ"></property>
+        <property name="gender" value="女"></property>
+<!--        设置对象属性-->
+        <property name="dept">
+            <bean id="dept" class="com.wust.spring5.bean.Dept">
+                <property name="name" value="安保部"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--    方式三：级联赋值-->
+    <bean id="emp2" class="com.wust.spring5.bean.Emp">
+        <property name="ename" value="JYQ"></property>
+        <property name="gender" value="女"></property>
+        <!--        设置对象属性-->
+        <property name="dept" ref="deptref"></property>
+    </bean>
+    <bean id="deptref" class="com.wust.spring5.bean.Dept">
+        <property name="name" value="安保部"></property>
+    </bean>
+</beans>

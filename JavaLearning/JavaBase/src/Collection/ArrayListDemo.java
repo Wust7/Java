@@ -23,5 +23,6 @@ public class ArrayListDemo {
 
         //获取元素
         System.out.println(arrayList.get(2));
+        System.out.println(arrayList.contains("WLK1"));
     }
 }
