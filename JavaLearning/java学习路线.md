@@ -1164,6 +1164,7 @@ public class BlobTest {
 
 ## 6.Spring5
 ### 6.1 基本概念
+* 轻量级开源JavaEE框架，为了解决企业复杂性包括IOC和AOP
 * 创建Spring配置文件，在配置文件配置创建的对象
 
 ### 6.2 IOC容器
@@ -1288,9 +1289,19 @@ public class BlobTest {
   * 第二种 ： 没有接口情况，使用CGLIB动态代理
     * 创建子类的代理对象，增强类的方法
 ### 6.4JdbcTemplate
-    * Spring框架对JDBC进行封装，使用JdbcTemplate方便实现对数据库操作
-#### 6.4.1 基本流程
-1.
+* Spring框架对JDBC进行封装，使用JdbcTemplate方便实现对数据库操作
+* com.JdbcTemplate
+* @Transactional :该注解可放在类、方法上，放在类上表示该类所有方法都添加事务，若方法在方法则为该方法添加事务
+* 事务传播行为：当一个事务方法被另一个事务方法调用时，该事务方法该如何处理
+### 6.5 Spring5新功能
+* log4j2.xml 日志操作
+* @Nullable:可以使用在方法、属性、参数上，表示该方法返回值、属性值、参数可以为空 
+
+## 7.SpringMVC
+* 基本概念：MVC是一种软件架构思想，将软件按照模型、视图、控制器来划分
+* M：Model，模型层，指工程中的JavaBean，作用是处理数据
+* V：View，视图层，指工程中html和jsp等页面，作用是与用户进行交互，展示数据
+* C：Controller，控制层，指工程中的servlet，作用是接收和响应浏览器
 
                                                                                                                                                                         
 

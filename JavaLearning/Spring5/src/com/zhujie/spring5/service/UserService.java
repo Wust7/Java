@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 
 /**
  * 在注解里面value属性值可以省略不写
- * 默认值是类名称，首字母小写  UserService -->userService
+ * !!!默认值是类名称，首字母小写  UserService -->userService
  */
 @Component(value = "userService") //<bean id="userService class="...">
 //@Service

@@ -70,5 +70,7 @@
     <orderEntry type="library" name="mysql-connector-java-5.1.7-bin" level="project" />
     <orderEntry type="library" name="spring-jdbc-5.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.28 (2)" level="project" />
+    <orderEntry type="library" name="log4j-api-2.11.2" level="project" />
+    <orderEntry type="library" name="spring-test-5.2.6.RELEASE" level="project" />
   </component>
 </module>

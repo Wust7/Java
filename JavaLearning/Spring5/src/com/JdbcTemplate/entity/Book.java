@@ -28,4 +28,13 @@ public class Book {
     public void setUserStatus(String userStatus) {
         UserStatus = userStatus;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "Id='" + Id + '\'' +
+                ", UserName='" + UserName + '\'' +
+                ", UserStatus='" + UserStatus + '\'' +
+                '}';
+    }
 }
