@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wust.mybatis.mapper.EmpMapper">
+<!--   解决字段名和属性名不一致情况List<Emp> getAllEmp();-->
+    <select id="getAllEmpOld" resultType="Emp">
+        <!--select * from t_emp   error-->
+        <!--select eid,emp_name empName,age,sex,email from t_emp          a>起别名-->
+        <!--b>通过settings(<setting name="mapUnderscoreToCamelCase" value="true"/>)配置_自动映射为驼峰-->
+        select * from t_emp
+    </select>
+
+<!--id唯一标识  type：映射关系中实体类类型-->
+    <resultMap id="empResultMap" type="Emp">
+<!--        id属性设置主键映射关系-->
+        <id property="eid" column="eid"></id>
+<!--        result设置普通字段关系,一旦用了resultMap建议将全部字段名都写一遍-->
+<!--        property实体类中的属性名，column：映射关系中查询的字段名-->
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+    </resultMap>
+<!--    c>通过resultMap进行设置-->
+    <select id="getAllEmp" resultMap="empResultMap">
+        select * from t_emp
+    </select>
+
+<!--处理多对一映射：方式一-->
+    <resultMap id="empAndDeptResultMapOne" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+        <result property="dept.did" column="did"></result>
+        <result property="dept.deptName" column="dept_name"></result>
+    </resultMap>
+<!--    Emp getEmpAndDept(@Param("eid")Integer eid);-->
+    <select id="getEmpAndDeptOld" resultMap="empAndDeptResultMapOne">
+        select * from t_emp left join t_dept on t_emp.did = t_dept.did where t_emp.eid = #{eid}
+    </select>
+
+<!--    处理多对一映射关系方法二-->
+    <resultMap id="empAndDeptResultMapTwo" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+<!--        association专门用来处理多对一映射关系-->
+<!--        property：需要处理多对的映射关系的属性名-->
+<!--        javaType：该属性的类型-->
+        <association property="dept" javaType="Dept">
+            <id property="did" column="did"></id>
+            <id property="deptName" column="dept_name"></id>
+        </association>
+    </resultMap>
+    <select id="getEmpAndDept" resultMap="empAndDeptResultMapTwo">
+        select * from t_emp left join t_dept on t_emp.did = t_dept.did where t_emp.eid = #{eid}
+    </select>
+
+    <!--    处理多对一映射关系方法三-->
+    <resultMap id="empAndDeptByStepResultMap" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+<!--
+       select:设置分步查询的sql的唯一标识（namespace，SQL Id）或mapper接口的全类名.方法名
+        column：设置分步查询的条件
+        fetchType:配置文件若开启延迟加载，但有一些功能不需要延迟加载，
+                可以通过fetchType来单独设置延迟或立即加载,eager:立即加载，lazy：延迟加载
+-->
+
+        <association property="dept"
+
+                     select="com.wust.mybatis.mapper.DeptMapper.getEmpAndDeptByStepTwo"
+                     column="did"
+                     fetchType="lazy"></association>
+    </resultMap>
+    <select id="getEmpAndDeptByStepOne" resultMap="empAndDeptByStepResultMap">
+        select * from t_emp where eid = #{eid}
+    </select>
+
+    <select id="getDeptAndEmpByStepTwo" resultType="Emp">
+        select * from t_emp where did=#{did}
+    </select>
+</mapper>

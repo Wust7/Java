@@ -8,11 +8,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SpringMVC" />
+        <module name="SpringMVC-annotation" />
+        <module name="MyBatis" />
+        <module name="SpringMVCRest" />
+        <module name="MyBaties_MBG" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Module_test1" target="8" />
+      <module name="MyBaties_MBG" target="8" />
+      <module name="MyBatis" target="8" />
+      <module name="MyBatis_MBG" target="1.5" />
       <module name="SpringMVC" target="8" />
+      <module name="SpringMVC-annotation" target="8" />
+      <module name="SpringMVCRest" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

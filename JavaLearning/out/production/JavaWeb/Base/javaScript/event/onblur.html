@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--        onload：常用于输入框失去焦点后验证其输入内容是否合法-->
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        // 事件是电脑输入设备与页面进行交互的响应
+        // 事件注册：告诉浏览器，当事件响应后要执行哪些操作代码
+        // 静态注册：通过html标签的事件属性直接赋于事件响应后的代码
+        // 静态注册失去焦点事件
+        //焦点事件：鼠标是否还在所选区域
+        function onblurFun() {
+            // console是控制台对象，是由JavaScript语言提供，专门用来向浏览器的控制器打印输出， 用于测试使用
+            // log() 是打印的方法
+            console.log("静态注册失去焦点事件");
+        }
+
+        //动态注册 ：先通过js代码得到标签的dom对象，然后通过dom对象.事件名 = function(){}
+        // 动态注册 onblur事件
+        window.onload = function () {
+            //1 获取标签对象
+           var passwordObj = document.getElementById("password");
+           // alert(passwordObj);
+            //2 通过标签对象.事件名 = function(){};
+            passwordObj.onblur = function () {
+                console.log("动态注册失去焦点事件");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    用户名:<input type="text" onblur="onblurFun();"><br/>
+    密码:<input id="password" type="text" ><br/>
+</body>
+</html>

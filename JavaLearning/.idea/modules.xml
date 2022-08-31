@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JavaBase/JavaBase.iml" filepath="$PROJECT_DIR$/JavaBase/JavaBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaEE/JavaEE.iml" filepath="$PROJECT_DIR$/JavaEE/JavaEE.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaLearning.iml" filepath="$PROJECT_DIR$/JavaLearning.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaWeb/JavaWeb.iml" filepath="$PROJECT_DIR$/JavaWeb/JavaWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyBaties_MBG/MyBaties_MBG.iml" filepath="$PROJECT_DIR$/MyBaties_MBG/MyBaties_MBG.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyBatis/MyBatis.iml" filepath="$PROJECT_DIR$/MyBatis/MyBatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/MySQL/MySQL.iml" filepath="$PROJECT_DIR$/MySQL/MySQL.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring5/Spring5.iml" filepath="$PROJECT_DIR$/Spring5/Spring5.iml" />
       <module fileurl="file://$PROJECT_DIR$/SpringMVC/SpringMVC.iml" filepath="$PROJECT_DIR$/SpringMVC/SpringMVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringMVC-annotation/SpringMVC-annotation.iml" filepath="$PROJECT_DIR$/SpringMVC-annotation/SpringMVC-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringMVCRest/SpringMVCRest.iml" filepath="$PROJECT_DIR$/SpringMVCRest/SpringMVCRest.iml" />
       <module fileurl="file://$PROJECT_DIR$/jdbc/jdbc.iml" filepath="$PROJECT_DIR$/jdbc/jdbc.iml" />
     </modules>
   </component>

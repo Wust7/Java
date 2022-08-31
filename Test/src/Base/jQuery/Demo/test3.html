@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            //attr
+            // alert( $(":checkbox:first").attr("name") ); // 获取
+            // $(":checkbox:first").attr("name","abc") ; // 设置
+
+            // $(":checkbox").prop("checked",false );// attr操作checked时会返回undefined官方觉得这是一个错误，因而提出prop方法
+
+            // $(":checkbox:first").attr("abc","abcValue");
+            // alert( $(":checkbox:first").attr("abc") );
+
+            // $("<h1>标题</h1>").appendTo( "div" );//将"<h1>标题</h1>"插入到"div"子元素末尾，成为最后一个子元素
+            // $("<h1>标题</h1>").prependTo( "div" );//将"<h1>标题</h1>"插入到"div"子元素开头，成为第一个子元素
+
+            // $("<h1>标题</h1>").insertAfter("div");//将"<h1>标题</h1>"插入到"div"元素后面
+
+            // $("<h1>标题</h1>").insertBefore( $("div") );//将"<h1>标题</h1>"插入到"div"元素前面
+
+
+            // $("div").replaceWith( "<h1>标题</h1>" );//"<h1>标题</h1>"替换div
+
+            $("<h1>标题</h1>").replaceAll( "div" );//"<h1>标题</h1>"替换div
+
+
+            // $("div").empty();//清除div标签里的内容
+
+        });
+
+
+    </script>
+</head>
+<body>
+<body>
+    <br/>
+    多选：
+    <input name="checkbox" type="checkbox" checked="checked" value="checkbox1" />checkbox1
+    <input name="checkbox" type="checkbox" value="checkbox2" />checkbox2
+    <br/><br/>
+    <div>1234</div>
+    <div>1234</div>
+</body>
+</body>
+</html>

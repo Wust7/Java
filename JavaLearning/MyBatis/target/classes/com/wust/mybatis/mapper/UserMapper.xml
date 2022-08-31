@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--第三步创建映射文件-->
+
+<mapper namespace="com.wust.mybatis.mapper.UserMapper">
+    <!--与接口中insertUser()对应-->
+    <insert id="insertUser">
+        insert into t_user values(null,'张三','123',23,'女','qwreqw')
+    </insert>
+
+<!--    updateUser-->
+    <update id="updateUser">
+        update t_user set username = '张si' where id = 1
+    </update>
+
+    <!--    deleteUser-->
+    <update id="deleteUser">
+        delete from t_user where id = 1
+    </update>
+<!--    getUserById-->
+<!--
+    查询功能必须设置resultType或resultMap：
+    resultType：设置默认映射关系     字段名和实体类属性名一致，直接进行赋值
+    resultMap：设置自定义的映射关系    名称不一致就要自定义
+-->
+    <select id="getUserById" resultType="User">
+        select * from t_user where id=1
+    </select>
+
+<!--    getUserAllUser-->
+    <select id="getUserAllUser" resultType="User">
+        select * from t_user
+    </select>
+<!--#{}：占位符赋值 会给传入的数据默认加上两个单引号  ${}:字符串拼接 不会给加单引号 括号内容不重要-->
+    <select id="getUserByUsername" resultType="User">
+--         select * from t_user where username = #{username1}
+        select * from t_user where username = '${username1}'
+    </select>
+
+<!--    多个参数：mybatis会将多个输入参数放在map集合中以arg0、arg1为键(或以param1、param2为键)，参数为值-->
+<!--    <select id="checkLogin" resultType="User">-->
+<!--        select * from t_user where username = #{arg0} and password = #{arg1}-->
+<!--    </select>-->
+
+<!--    手动将创建map集合，自定义键名-->
+    <select id="checkLogin" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+
+<!--    获取实体类中的对象，只需要传入该实体类-->
+    <insert id="insertByUser">
+        insert into t_user values(null,#{username},#{password},#{age},#{sex},#{email})
+    </insert>
+
+<!--    使用@Param命名参数会将多个输入参数放在map集合中以username、password为键(或以param1、param2为键)-->
+    <select id="checkLoginByParam" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+<!--    官方默认设置了类型别名-->
+    <select id="getCount" resultType="Integer">
+        select count(*) from t_user
+    </select>
+<!--    getUserByIdToMap-->
+    <select id="getUserByIdToMap" resultType="map">
+        select * from t_user where id = ${id}
+    </select>
+<!--    getAllUserToMap-->
+    <select id="getAllUserToMap" resultType="map">
+        select * from t_user
+    </select>
+<!--    getUserByLike-->
+    <select id="getUserByLike" resultType="user">
+<!--select * from t_user where username like '%${username}%'-->
+<!--select * from t_user where username like concat('%',#{username},'%')-->
+        select * from t_user where username like "%"#{username}"%"
+    </select>
+
+<!--    批量删除：deleteMore-->
+    <delete id="deleteMore">
+<!--只能使用$符号进行删除，因为会添加单引号-->
+        delete from t_user where id in (${ids})
+    </delete>
+
+<!--    动态设置表名：getUserByTableName-->
+    <select id="getUserByTableName" resultType="User">
+        select * from ${tableName}
+    </select>
+
+<!--
+    添加自动递增的主键：insertUser
+    useGeneratedKeys：设置当前标签中的sql使用了自增的主键
+    keyProperty：将自增的主键赋值给传输到映射文件中参数的某个属性
+-->
+    <insert id="insertUserById" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user values(null,#{username},#{password},#{age},#{sex},#{email})
+    </insert>
+</mapper>

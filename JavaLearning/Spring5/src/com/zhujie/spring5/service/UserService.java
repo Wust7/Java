@@ -28,7 +28,10 @@ public class UserService {
 //    @Resource //根据类型进行注入
 //    private UserDao userDao;
 
-    @Resource(name = "userDaoImpl1") //根据名称进行注入   -- 是javax中的，官方不建议使用
+//    @Resource(name = "userDaoImpl1") //根据名称进行注入   -- 是javax中的，官方不建议使用
+//    private UserDao userDao;
+
+    @Autowired
     private UserDao userDao;
 
     @Value(value = "abc") //将abc注入name中

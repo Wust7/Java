@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <h1>test</h1>
+<!--    通过thymeleaf能自动添加上下文路径-->
+<!--    第一步：浏览器发送请求地址target1-->
+<a th:href="@{/target1}">访问目标页面target.html</a><br/>
+
+<a th:href="@{/hello/testRequestMapping}">测试RequestMapping注解的value属性-->/testRequestMapping</a><br/>
+<a th:href="@{/hello/test}">测试RequestMapping注解的value属性-->/test</a><br/>
+
+<a th:href="@{/hello/test}">测试RequestMapping注解的method属性-->/GET</a><br/>
+<form th:action="@{/hello/test}" method="post">
+    <input type="submit" value=">测试RequestMapping注解的method属性-->/POST">
+</form>
+
+<a th:href="@{/hello/testGetMapping}">测试GetMapping注解-->/testGetMapping</a><br/>
+
+<!--    不行，只能get或post-->
+<form th:action="@{/hello/testPut}" method="put">
+    <input type="submit" value=">测试form表单能否发送put或delete请求方式">
+</form>
+
+<a th:href="@{/hello/testParamsAndHeaders(username='admin',password=1234)}">测试RequestMapping注解的params属性-->testParamsAndHeaders</a><br/>
+<a th:href="@{/hello/testHeaders}">测试RequestMapping注解的Headers属性-->testHeaders</a><br/>
+<a th:href="@{/hello/aba/testAnt}">测试RequestMapping匹配Ant风格路径-->使用?</a><br/>
+<a th:href="@{/hello/aba/testAnt}">测试RequestMapping匹配Ant风格路径-->使用*</a><br/>
+<a th:href="@{/hello/aba/testAnt}">测试RequestMapping匹配Ant风格路径-->使用**</a><br/>
+
+
+<a th:href="@{/hello/testPath/1/wst}">测试RequestMapping支持路径中的占位符-->/testPath</a><br/>
+
+<a th:href="@{/testRequestByServletAPI}">通过servletAPI向request域对象共享数据</a><br/>
+<a th:href="@{/testModelAndView}">通过ModelAndView向request域对象共享数据</a><br/>
+<a th:href="@{/testModel}">通过Model向request域对象共享数据</a><br/>
+<a th:href="@{/testMap}">通过Map向request域对象共享数据</a><br/>
+<a th:href="@{/testModelMap}">通过ModelMap向request域对象共享数据</a><br/>
+
+
+<a th:href="@{/testSession}">通过Session向session域对象共享数据</a><br/>
+
+<a th:href="@{/testApplication}">通过Application向Application域对象共享数据</a><br/>
+
+
+</body>
+</html>
