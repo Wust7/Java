@@ -1,6 +1,7 @@
 package com.wust.mvc.controller;
 
 import com.wust.mvc.bean.User;
+import org.springframework.core.io.support.ResourcePropertiesPersister;
 import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

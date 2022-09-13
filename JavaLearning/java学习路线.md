@@ -1335,3 +1335,15 @@ dao持久层     dao(接口包)、impl(实现类)
    * 重定向不能获取request请求域中的数据，因为浏览器发送两次请求，两次请求对应两个request域数据，因而获取不到域中数据
    * 重定向不能获取WEB-INF中的资源，因为两次请求都发生在浏览器
    * 重定向可以跨域
+
+
+## 8.项目笔记
+
+### 8.1注解
+* @RestController=@ResponseBody+@Controller
+* springboot资源加载顺序：
+  * META/resources
+  * resources
+  * static
+  * public
+  * "classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/"
